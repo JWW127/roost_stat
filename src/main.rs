@@ -1,3 +1,4 @@
+use colored::*;
 use errors::StatsError;
 use src_stats::get_summary_src_stats;
 use std::path::PathBuf;
@@ -20,7 +21,17 @@ fn main() -> Result<(), StatsError> {
     match mode {
         "src" => {
             let stats = get_summary_src_stats(&opt.in_dir)?;
-            println!("Summary stats: {:?}", stats);
+            let nof = format!("{}", stats.number_of_files);
+            let loc = format!("{}", stats.loc);
+            let comments = format!("{}", stats.comments);
+            let blanks = format!("{}", stats.blanks);
+            println!(
+                "Summary stats:\n Number of Files: {}\n Lines of Code: {}\n Comments: {}\n Blanks: {}\n",
+                nof.yellow(),
+                loc.red(),
+                comments.cyan(),
+                blanks.magenta()
+            );
         }
         _ => println!("Sorry, no stats found"),
     }
