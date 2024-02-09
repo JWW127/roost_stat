@@ -5,7 +5,7 @@
 
 ## What does roost_stat do?
 
-Shell command tool, when given a directory, data concerning Rust file statistics is returned.
+Shell command tool, when given a directory, data concerning Rust file statistics are returned.
 
 - Rust file count
 - File Metrics
